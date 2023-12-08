@@ -1,0 +1,144 @@
+@font-face {
+    font-family: Roboto;
+    src: url("Roboto-Medium.ttf") format("truetype");
+}
+
+body {
+    background-image: url("ShinyOverlay.svg");
+    font-family: Roboto, sans-serif;
+    width:100%;
+    margin:0;
+
+}
+
+.prints {
+    font-size: xxx-large;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+
+.game a {
+    color: #000000;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0.2rem;
+}
+
+#navigation {
+    text-align: center;
+}
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 100%;
+    background-color: steelblue;
+    padding: 1rem;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-width: medium;
+    border-color: #86989B;
+}
+h3 {
+    width: 45%;
+    text-align: center;
+    margin-left: 1rem;
+}
+.container {
+    display: flex;
+    width: 100%;        
+    position: relative; 
+}
+#map{
+    width: 50%;
+    margin: 0.5rem;
+}
+
+
+main p {
+    text-align: center;
+    margin-right: 2rem;
+}
+
+#tab {
+    border-width: 0.2rem;
+    border-radius: 4px;
+}
+td {
+    border: solid;
+    border-color: #86989B;
+
+}
+#name {
+    text-align: center;
+}
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+.stats {
+    width:50%;
+
+}
+.block {
+    display: flex;
+    width: 46%;
+    border-style: solid;
+    border-width: medium;
+    border-color: #86989B;
+    border-radius: 4px;
+    margin: 0.5rem;
+    background-color: steelblue;
+    padding: 0.5rem 1rem;
+    font-size: x-small;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hide {                                     
+    display: none;                          
+}                                           
+                                            
+.win {                                      
+    background-image: url("paw.jpg");       
+    background-size: contain;               
+    margin: auto;                           
+    background-repeat: no-repeat;           
+    padding: 9rem 7rem;                     
+    position: absolute;                     
+    bottom: 30%;                            
+                                            
+}                                           
+
+.page-footer {                     
+    text-align: center;            
+}                                  
+                                   
+.page-footer {                     
+    background-color: steelblue;   
+    padding: 2rem;                 
+    margin-top: 15rem;             
+}                                  
+#player-modal {                    
+    width: 100vw;                  
+    height: 100vh;                 
+    position: absolute;            
+    top: 0;                        
+}                                  
+                                   
+#player-form {                     
+    display: flex;                 
+    width: 40%;                    
+    margin: 4rem auto;             
+    flex-direction: column;        
+}                                  
+                                   
+#player-form input {               
+    padding: 1rem;                 
+}                                  

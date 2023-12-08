@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML,CSS assignment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="CSS/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="JS/main.js" defer></script>
+</head>
+<body>
+<div class="nav">
+    <div class="game">
+        <p class="prints">&#128062;</p>
+        <h1>Tassunjäljet lentokentalla</h1>
+        <p class="prints">&#128062;</p>
+        <table id="tab">
+                <tr>
+                    <td id = "name" colspan = "3">Player Name</td>
+                </tr>
+                <tr>
+                    <td>Time Left:<span id="time">7</span>  days</td>
+                    <td>Money: <span id="money">9000</span> €</td>
+                    <td>Distance: <span id="dist">18000</span> km</td>
+                </tr>
+        </table>
+         <nav id="navigation">
+            <ul>
+                <li>
+                    <a class="button" href="HTML.html">Game</a>
+                    <a class="button" href="about.html">About</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+<main class="container">
+    <div id="map">
+
+    </div>
+        <div class="stats">
+
+            <div class="location">
+                <p>You are at EFHK (Helsinki Vantaa Airport).</p>
+                <p> Where do you want to go?</p>
+                </div>
+                <figure class = "buttons">
+                    <button class="block">Chiang Mai International Airport</button>
+                    <button class="block">King Fahd International Airport</button>
+                    <button class="block">El Dorado International Airport</button>
+                    <button class="block">Fukuoka Airport</button>
+                    <button class="block">Kansas City International Airport</button>
+                    <button class="block">Hato International Airport</button>
+                    <button class="block">Chiang Mai International Airport</button>
+                    <button class="block">King Fahd International Airport</button>
+                    <button class="block">El Dorado International Airport</button>
+                    <button class="block">Fukuoka Airport</button>
+                    <button class="block">Kansas City International Airport</button>
+                    <button class="block">Hato International Airport</button>
+                    <button class="block">Chiang Mai International Airport</button>
+                    <button class="block">King Fahd International Airport</button>
+                    <button class="block">El Dorado International Airport</button>
+                    <button class="block">Fukuoka Airport</button>
+                    <button class="block">Kansas City International Airport</button>
+                    <button class="block">Hato International Airport</button>
+                    <button class="block">Chiang Mai International Airport</button>
+                    <button class="block">King Fahd International Airport</button>
+
+                </figure>
+
+        </div>
+</main>
+<footer class="page-footer">
+    <p>We made this!</p>
+</footer>
+<div class="win hide">
+    <h2>"Mission Success!!!</h2>
+    <p>
+        <span id="win-txt"> Well done! You Won!!!</span>
+    </p>
+</div>    
+<div id="player-modal" class="hide">
+    <form id="player-form">
+        <input id="player-input" type="text" placeholder="player name" required>
+        <input type="submit" value="start game">
+    </form>
+</div>    
+</body>
+
+</html>
+
+
+
