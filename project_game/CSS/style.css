@@ -167,14 +167,36 @@ td {
     padding: 1rem;                 
 }                                  
 
-.pet {
-    width: 7rem;
+#cat, #dog {
+    width: 30%;
     height: auto;
     margin: 1rem;
     border: darkcyan;
     border-style: solid;
 }
 
-.pet:hover {
+#cat, #dog:hover {
     cursor: pointer;
 }
+
+.modal {
+            display: none;
+            position: fixed;
+            z-index: 100000;
+            padding-top: 7px;
+            left: 20rem;
+            top: 0;
+            width: 18rem;
+            height: 32rem;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;}

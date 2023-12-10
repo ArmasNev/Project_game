@@ -68,14 +68,23 @@
         <input id="player-input" type="text" placeholder="player name" required>
         <p>What pet did you bring with you, a cat or a dog?</p>
         <div class="pets">
-            <img src="CSS/Koira.jpg" alt="koira" class = "pet">
-            <img src="CSS/Kissa.jpg" alt="kissa" class = "pet">
+            <img src="CSS/Koira.jpg" alt="koira" id = "dog">
+            <img src="CSS/Kissa.jpg" alt="kissa" id = "cat">
         </div>
-
-
         <input type="submit" value="start game">
     </form>
-</div>    
+</div>
+<div id="video" class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+        <video id ="joey" width="100%" height="95%" controls>
+            <source src="CSS/joey.mp4" type="video/mp4">
+        </video>
+    </div>
+  </div>
+</div>
+
+</div>
 </body>
 
 </html>
