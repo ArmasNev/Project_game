@@ -143,17 +143,38 @@ td {
 #player-modal {                    
     width: 100vw;                  
     height: 100vh;                 
-    position: absolute;            
+    position: absolute;
+    z-index: 1000;
     top: 0;                        
 }                                  
                                    
 #player-form {                     
-    display: flex;                 
+    display: flex;
     width: 40%;                    
     margin: 4rem auto;             
-    flex-direction: column;        
-}                                  
+    flex-direction: column;
+    background-color: oldlace;
+    text-align: center;
+}
+
+.pets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
                                    
 #player-form input {               
     padding: 1rem;                 
 }                                  
+
+.pet {
+    width: 7rem;
+    height: auto;
+    margin: 1rem;
+    border: darkcyan;
+    border-style: solid;
+}
+
+.pet:hover {
+    cursor: pointer;
+}

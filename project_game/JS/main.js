@@ -25,6 +25,12 @@ const  pawGreenIcon = L.icon({
 const airportMarkers = L.featureGroup().addTo(map);
 const buttons = document.querySelector('.buttons')
 // form for player name
+document.querySelector('#player-form').addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const playerName = document.querySelector('#player-input').value;
+  document.querySelector('#player-modal').classList.add('hide');
+  //gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
+});
 
 // function to fetch data from API
 async function getData() {
