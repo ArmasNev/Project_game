@@ -112,6 +112,9 @@ td {
     cursor: pointer;
     text-align: center;
 }
+.block:hover {
+  background-color: green;
+}
 
 .hide {                                     
     display: none;                          
