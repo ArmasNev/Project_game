@@ -22,8 +22,10 @@ const  pawGreenIcon = L.icon({
     iconAnchor:   [-7, -3], // point of the icon which will correspond to marker's location
     popupAnchor:  [15, 15] // point from which the popup should open relative to the iconAnchor
 });
-const modal = document.getElementById("video");
+const modal1 = document.getElementById("video");
+const modal2 = document.getElementById("video2");
 const cat = document.getElementById("cat");
+const dog = document.getElementById("dog");
 const airportMarkers = L.featureGroup().addTo(map);
 const buttons = document.querySelector('.buttons')
 // form for player name
@@ -82,12 +84,19 @@ setTimeout(map);
 document.addEventListener('click', function (event) {
     if (event.target.id === 'cat') {
         cat.style.width = '35%';
-        modal.style.display = "block";
+        modal1.style.display = "block";
         document.getElementById("joey").play();
         setTimeout(function () {
-            modal.style.display = "none";
+            modal1.style.display = "none";
             }, 7000);
-
+    }
+    if (event.target.id === 'dog') {
+        dog.style.width = '35%';
+        modal2.style.display = "block";
+        document.getElementById("dogvid").play();
+        setTimeout(function () {
+            modal2.style.display = "none";
+            }, 6000);
     }
 
 });

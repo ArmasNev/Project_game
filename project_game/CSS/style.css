@@ -179,19 +179,32 @@ td {
     cursor: pointer;
 }
 
-.modal {
-            display: none;
-            position: fixed;
-            z-index: 100000;
-            padding-top: 7px;
-            left: 20rem;
-            top: 0;
-            width: 18rem;
-            height: 32rem;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+#video {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    padding-top: 7px;
+    left: 20rem;
+    top: 0;
+    width: 18rem;
+    height: 32rem;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#video2 {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    padding-top: 7px;
+    left: 27rem;
+    top: 10rem;
+    width: 30rem;
+    height: auto;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
 .modal-content {
     position: relative;
