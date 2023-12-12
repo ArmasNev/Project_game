@@ -9,6 +9,7 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 map.setView([-50, 0], 1);
 
 const data = 'http://127.0.0.1:5000/get_airports';
+const apiUrl = 'http://127.0.0.1:5000/'
 const airportsInRange = 'http://127.0.0.1:5000/airports_in_range';
 const  pawYellowIcon = L.icon({
     iconUrl: 'CSS/paw_yellow.png',
@@ -33,7 +34,7 @@ document.querySelector('#player-form').addEventListener('submit', function (evt)
   evt.preventDefault();
   const playerName = document.querySelector('#player-input').value;
   document.querySelector('#player-modal').classList.add('hide');
-  //gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
+  gameSetup(`${apiUrl}newgame?player=${playerName}`);
 });
 
 // function to fetch data from API
@@ -75,7 +76,7 @@ async function getData() {
     }
 }
 
-getData();
+//getData();
 setTimeout(function () {
     window.dispatchEvent(new Event("resize"));
 }, 500);
