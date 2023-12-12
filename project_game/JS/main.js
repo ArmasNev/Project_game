@@ -76,11 +76,21 @@ async function getData() {
     }
 }
 
+
+async function fly(){
+    const response = await fetch(`${apiUrl}/${1}/${2}`);
+        if (!response.ok) throw new Error('Invalid server input!');
+    const responseData = await response.json();
+    console.log(responseData);}
+fly();
+
+
+
 //getData();
-setTimeout(function () {
-    window.dispatchEvent(new Event("resize"));
-}, 500);
-setTimeout(map);
+//setTimeout(function () {
+    //window.dispatchEvent(new Event("resize"));
+//}, 500);
+//setTimeout(map);
 
 document.addEventListener('click', function (event) {
     if (event.target.id === 'cat') {
