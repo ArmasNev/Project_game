@@ -1,16 +1,37 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import json
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
+from flask import Flask
+from flask_cors import CORS
+from geopy import distance
+from game import Game
 
 
-# Press the green button in the gutter to run the script.
+app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+@app.route('/newgame/<nimi>')
+def newgame(nimi):
+    peli = Game(0, 'EFHK', 10000, 240, nimi)
+    airports = peli.get_airports()
+    game_id = peli.new_game(airports)
+    response = {'game_id': game_id}
+    return json.dumps(response)
+
+@app.route('/flyto/<game_id>/<target>')
+def flyto(game_id, target):
+    peli = Game(game_id, target)
+    response = {peli}
+    print(json.dumps(response))
+    return json.dumps(response)
+
+
+
+
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    app.run(use_reloader=True, host='127.0.0.1', port=5000)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
