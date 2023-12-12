@@ -9,7 +9,7 @@ class Database:
             port=3306,
             database='flight_game',
             user='root',
-            password='',
+            password='6661507',
             autocommit=True
         )
 

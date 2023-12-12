@@ -112,6 +112,9 @@ td {
     cursor: pointer;
     text-align: center;
 }
+.block:hover {
+  background-color: green;
+}
 
 .hide {                                     
     display: none;                          
@@ -140,17 +143,73 @@ td {
 #player-modal {                    
     width: 100vw;                  
     height: 100vh;                 
-    position: absolute;            
+    position: absolute;
+    z-index: 1000;
     top: 0;                        
 }                                  
                                    
 #player-form {                     
-    display: flex;                 
+    display: flex;
     width: 40%;                    
     margin: 4rem auto;             
-    flex-direction: column;        
-}                                  
+    flex-direction: column;
+    background-color: oldlace;
+    text-align: center;
+}
+
+.pets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
                                    
 #player-form input {               
     padding: 1rem;                 
 }                                  
+
+#cat, #dog {
+    width: 30%;
+    height: auto;
+    margin: 1rem;
+    border: darkcyan;
+    border-style: solid;
+}
+
+#cat, #dog:hover {
+    cursor: pointer;
+}
+
+#video {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    padding-top: 7px;
+    left: 20rem;
+    top: 0;
+    width: 18rem;
+    height: 32rem;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#video2 {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    padding-top: 7px;
+    left: 27rem;
+    top: 10rem;
+    width: 30rem;
+    height: auto;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;}

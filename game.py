@@ -109,20 +109,20 @@ def update_location(g_id, name, icao, m, time):
     cursor = db.get_conn().cursor(dictionary=True)
     cursor.execute(sql, (name, icao, money, time, g_id))
 
-#t_limit = 0
-#while True:
-    #pet=input('What pet did you bring with you, a cat or a dog? ').lower()
-    #if pet == "cat":
-        #t_limit = 240
-        #break
-    #elif pet == "dog":
-        #t_limit = 168
-        #break
-    #else:
-        #print('Sorry, you can only take a cat or a dog.')
+t_limit = 0
+"""while True:
+    pet=input('What pet did you bring with you, a cat or a dog? ').lower()
+    if pet == "cat":
+        t_limit = 240
+        break
+    elif pet == "dog":
+        t_limit = 168
+        break
+    else:
+        print('Sorry, you can only take a cat or a dog.')"""
 
 
-# boolean for game over and win
+
 game_over = False
 win = False
 money = 10000
