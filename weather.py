@@ -6,7 +6,7 @@ load_dotenv()
 
 
 class Weather:
-    def __init__(self, location):
+    def __init__(self, location, game):
         apikey = os.environ.get("API_KEY")
 
         if apikey is None:

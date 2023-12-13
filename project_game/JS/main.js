@@ -142,6 +142,13 @@ function updateStatus(status) {
 // function to update event data and event table in UI
 
 // function to check if game is over
+function checkGameOver(money) {
+    if (money <= 0) {
+        alert(`Game Over: You are out of money! Current balance: ${money} €`);
+        return false;
+    }
+    return true;
+}
 
 // function to set up game (main function) <---
 

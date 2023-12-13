@@ -1,5 +1,7 @@
 import mysql.connector
+
 import os
+
 
 from dotenv import load_dotenv
 
@@ -7,7 +9,8 @@ load_dotenv()
 
 
 class Database:
-    def init(self):
+
+    def __init__(self):
         """self.conn = mysql.connector.connect(
             host='localhost',
             port=3306,
