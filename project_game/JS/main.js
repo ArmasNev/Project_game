@@ -34,7 +34,7 @@ async function getData(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error('Invalid server input!');
   const data = await response.json();
-  return json.dumps(data);
+  return data;
 }
 
 // form for player name
@@ -50,9 +50,10 @@ async function gameSetup(url) {
     try {
         airportMarkers.clearLayers();
         const gameData = await getData(url);
-        console.log(gameData);
+        const airportsArray = gameData.airports;
+        console.log(airportsArray)
         updateStatus(gameData.status);
-        for (let airport of responseData) {
+        for (let airport of airportsArray) {
             const marker = L.marker([airport.latitude_deg, airport.longitude_deg]).addTo(map);
             airportMarkers.addLayer(marker);
             marker.setIcon(pawYellowIcon);
@@ -95,10 +96,10 @@ async function fly(){
     const responseData = await response.json();
     console.log(responseData);}
 
-    setTimeout(function () {
+ /*  setTimeout(function () {
         window.dispatchEvent(new Event("resize"));
     }, 500);
-    setTimeout(map);
+    setTimeout(map);*/
 
 document.addEventListener('click', function (event) {
     if (event.target.id === 'cat') {

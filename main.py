@@ -17,7 +17,7 @@ def newgame():
     peli = Game(0, 'EFHK', 10000, 240, name)
     airports = peli.get_airports()
     game_id = peli.new_game(airports)
-    response = {'game_id': game_id}
+    response = {'game_id': game_id, 'airports': airports}
     return json.dumps(response)
 
 def fly(id, dest, consumption=0, player=None):
