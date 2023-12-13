@@ -120,6 +120,12 @@ async function inRange() {
 }
 
 // function to update game status
+function updateStatus(status) {
+    document.querySelector('#name').innerHTML = 'Player Name'
+    document.querySelector('#time').innerHTML = '7 Days'
+    document.querySelector('#money').innerHTML = '9000 €'
+    document.querySelector('#dist').innerHTML = '1800 km'
+}
 
 // function show weather at selected airport
 
