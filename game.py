@@ -1,5 +1,8 @@
 import random
 from database import Database
+from geopy import distance
+import config
+import json
 
 db = Database()
 
@@ -9,13 +12,12 @@ class Game():
         self.airports = []
         self.goals = []
         self.money = money
-        self.p_range = money * 4
         self.time = time
         self.player = player
         self.id = id
 
 
-    def get_airports():
+    def get_airports(self):
         sql = """SELECT iso_country, ident, name, type, latitude_deg, longitude_deg
         FROM airport
         WHERE type='large_airport'
@@ -53,15 +55,18 @@ class Game():
 
         e_ports = a_ports[1:].copy()
         random.shuffle(e_ports)
+        response = e_ports
+
+
 
         for i, event_id in enumerate(id_list):
             sql = "INSERT INTO events (location, event_id, game_id) VALUES (%s, %s, %s);"
             cursor = db.get_conn().cursor(dictionary=True)
             cursor.execute(sql, (e_ports[i]['ident'], event_id, g_id))
-        return g_id
+        return g_id, json.dumps(response)
 
     # Get information about airport
-    def get_airport_info(icao):
+    def get_airport_info(self, icao):
         sql=f'''SELECT iso_country, ident, name, latitude_deg, longitude_deg
                 FROM airport
                 WHERE ident = %s'''
@@ -71,24 +76,24 @@ class Game():
         return result
 
 
-    def airport_distance(current, target):
-        start = get_airport_info(current)[0]  # Access the first (and only) item in the list
-        end = get_airport_info(target)[0]  # Access the first (and only) item in the list
+    def airport_distance(self, current, target):
+        start = self.get_airport_info(current)[0]  # Access the first (and only) item in the list
+        end = self.get_airport_info(target)[0]  # Access the first (and only) item in the list
         start_coords = (start['latitude_deg'], start['longitude_deg'])
         end_coords = (end['latitude_deg'], end['longitude_deg'])
         return distance.distance(start_coords, end_coords).km
 
-    def airports_in_range(icao, a_ports, p_range):
+    def airports_in_range(self, icao, a_ports, p_range):
         in_range = []
         for a_port in a_ports:
-            dist = airport_distance(icao, a_port['ident'])
+            dist = self.airport_distance(icao, a_port['ident'])
             if dist <= p_range and not dist == 0:
                 in_range.append(a_port)
         return in_range
 
 
 
-    def check_event(g_id, cur_airport):
+    def check_event(self, g_id, cur_airport):
         sql = '''
             SELECT events.id, event.id as event_id, event.min, event.max, events.game_id
             FROM events
@@ -104,10 +109,10 @@ class Game():
         return result
 
 
-    def update_location(g_id, name, icao, m, time):
+    def update_location(self, g_id, name, icao, m, time):
         sql = '''UPDATE game SET name = %s, location = %s,  bank = %s, time = %s  WHERE id = %s'''
         cursor = db.get_conn().cursor(dictionary=True)
-        cursor.execute(sql, (name, icao, money, time, g_id))
+        cursor.execute(sql, (name, icao, self.money, time, g_id))
 
 
 """
