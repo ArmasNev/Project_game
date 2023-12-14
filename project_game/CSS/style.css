@@ -129,7 +129,12 @@ td {
     position: absolute;                     
     bottom: 30%;                            
                                             
-}                                           
+} 
+
+.win audio {
+    width: 30%;
+    outline: none;
+}
 
 .page-footer {                     
     text-align: center;            
