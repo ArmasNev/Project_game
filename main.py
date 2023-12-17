@@ -16,7 +16,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/newgame')
 def newgame():
     name = request.args.get("name", "default_player")
-    game = Game(name=name)
+    pet = request.args.get("selectedPet", "default_pet")
+    game = Game(name=name, pet=pet)
     game_id = game.new_game()
     return jsonify({'game_id': game_id, 'airports': game.airports})
 
