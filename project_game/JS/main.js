@@ -100,7 +100,7 @@ async function gameSetup(url) {
 
             button.addEventListener('click', function () {
                 flyToAirport(airport.ident);
-                currentAirport = {'latitude' : airport.latitude_deg, 'longitude' : airport.longitude_deg}
+                currentAirport = {'latitude': airport.latitude_deg, 'longitude': airport.longitude_deg}
 
 
             });
@@ -143,8 +143,8 @@ async function flyToAirport(airportIdent) {
                 winElement.style.display = "block";
                 winAudio.play();
                 setTimeout(function () {
-                window.location.href = 'about.html';
-            }, 10000);
+                    window.location.href = 'about.html';
+                }, 10000);
 
 
             } else {
@@ -191,10 +191,11 @@ async function fetchCurrentWeather(lat, lon) {
         console.log(`fetchCurrentWeather error: ${error}`);
     }
 }
+
 async function updateTime() {
     try {
         const game_id = sessionStorage.getItem('game_id');
-        console.log (game_id);
+        console.log(game_id);
         const response = await fetch(`${apiUrl}/time_update/${game_id}`);
 
         if (!response.ok) {
@@ -234,22 +235,22 @@ async function checkWeatherCondition(lat, lon) {
     const pElement = dialogElement.querySelector('p');
     const imgElement = dialogElement.querySelector('img');
     if (weather.weather[0].id >= 500 && weather.weather[0].id <= 622) {
-            const updateTimeResult = await updateTime();
+        const updateTimeResult = await updateTime();
 
-            if (updateTimeResult.error) {
-                console.error('Error updating time:', updateTimeResult.error);
-                pElement.innerHTML = `Weather warning: Storm approaching. Unable to update flight delay information.`;
-            } else {
-                const delay = updateTimeResult.data.time_reduced_by; 
-                pElement.innerHTML = `Weather warning: Storm approaching. Your flight is delayed for ${delay} hours!`;
-            }
+        if (updateTimeResult.error) {
+            console.error('Error updating time:', updateTimeResult.error);
+            pElement.innerHTML = `Weather warning: Storm approaching. Unable to update flight delay information.`;
+        } else {
+            const delay = updateTimeResult.data.time_reduced_by;
+            pElement.innerHTML = `Weather warning: Storm approaching. Your flight is delayed for ${delay} hours!`;
+        }
 
-            imgElement.src = 'https://openweathermap.org/img/wn/10d@2x.png';
-            imgElement.alt = 'Icon of a storm';
+        imgElement.src = 'https://openweathermap.org/img/wn/10d@2x.png';
+        imgElement.alt = 'Icon of a storm';
 
         setTimeout(function () {
-                dialogElement.showModal();
-            }, 1500);
+            dialogElement.showModal();
+        }, 1500);
 
 
     }
@@ -271,9 +272,7 @@ async function inRange() {
     const responseData = await response.json();
 }
 
-// function show weather at selected airport
 
-// function to check if game is over
 function checkGameOver(money) {
     if (money <= 0) {
         alert(`Game Over: You are out of money! Current balance: ${money} €`);
@@ -282,4 +281,24 @@ function checkGameOver(money) {
     return true;
 }
 
-// function to set up game (main function) <---
+let selectedPet = null;
+
+function selectPet(pet) {
+    selectedPet = pet;
+    console.log('Selected pet:', selectedPet);
+    enableStartGameButton(); // Enable the button when a pet is selected
+}
+
+function enableStartGameButton() {
+    let startGameButton = document.getElementById('start-game-btn');
+    startGameButton.disabled = false;
+}
+
+function validateForm() {
+    if (selectedPet === null) {
+        alert('Please select a pet before starting the game.');
+        return false; // Prevent form submission
+    }
+    // Additional validation logic can be added here if needed
+    return true; // Allow form submission
+}

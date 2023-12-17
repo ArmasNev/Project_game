@@ -15,19 +15,19 @@
 <div class="nav">
     <div class="game">
         <p class="prints">&#128062;</p>
-        <h1>Tassunjäljet lentokentalla</h1>
+        <h1>Tassunjäljet lentokentällä</h1>
         <p class="prints">&#128062;</p>
         <table id="tab">
-                <tr>
-                    <td id = "name" colspan = "3">Player Name</td>
-                </tr>
-                <tr>
-                    <td>Time Left:<span id="time">7</span>  days</td>
-                    <td>Money: <span id="money">9000</span> €</td>
-                    <td>Distance: <span id="dist">18000</span> km</td>
-                </tr>
+            <tr>
+                <td id="name" colspan="3">Player Name</td>
+            </tr>
+            <tr>
+                <td>Time Left:<span id="time">0</span></td>
+                <td>Money: <span id="money">0</span> €</td>
+                <td>Distance: <span id="dist">0</span> km</td>
+            </tr>
         </table>
-         <nav id="navigation">
+        <nav id="navigation">
             <ul>
                 <li>
                     <a class="button" href="HTML.html">Game</a>
@@ -43,60 +43,67 @@
     <div id="map">
 
     </div>
-        <div class="stats">
+    <div class="stats">
 
-            <div class="location">
-                <p>You are at EFHK (Helsinki Vantaa Airport).</p>
-                <p> Where do you want to go?</p>
-                </div>
-                <figure class = "buttons">
-                </figure>
-
+        <div class="location">
+            <p id="airport"></p>
+            <p> Where do you want to go?</p>
         </div>
+        <figure class="buttons">
+        </figure>
+
+    </div>
 </main>
 <footer class="page-footer">
     <p>We made this!</p>
 </footer>
-<div class="win hide">
-    <h2>"Mission Success!!!</h2>
+<div class="win">
+    <h2 class="win-txt">"Mission Success!!!</h2>
     <p>
-        <span id="win-txt"> Well done! You Won!!!</span>
+        <span class="win-txt"> Well done! You Won!!!</span>
+        <audio class="win-audio" src="CSS/music.mp3" type="audio/mp3"></audio>
     </p>
-</div>    
+</div>
 <div id="player-modal">
-    <form id="player-form">
+    <form id="player-form" onsubmit="return validateForm()">
         <input id="player-input" type="text" placeholder="player name" required>
         <p>What pet did you bring with you, a cat or a dog?</p>
         <div class="pets">
-            <img src="CSS/Koira.jpg" alt="koira" id = "dog">
-            <img src="CSS/Kissa.jpg" alt="kissa" id = "cat">
+            <img src="CSS/Koira.jpg" alt="koira" id="dog" onclick="selectPet('dog')">
+            <img src="CSS/Kissa.jpg" alt="kissa" id="cat" onclick="selectPet('cat')">
         </div>
-        <input type="submit" value="start game">
+        <input type="submit" value="start game" id="start-game-btn" disabled>
     </form>
 </div>
 <div id="video" class="modal">
-  <div class="modal-content">
-    <div class="modal-body">
-        <video id ="joey" width="100%" height="95%" controls>
-            <source src="CSS/joey.mp4" type="video/mp4">
-        </video>
+    <div class="modal-content">
+        <div class="modal-body">
+            <video id="joey" width="100%" height="95%" controls>
+                <source src="CSS/joey.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
-  </div>
 </div>
 <div id="video2" class="modal">
-  <div class="modal-content">
-    <div class="modal-body">
-        <video id ="dogvid" width="100%" height="95%" controls>
-            <source src="CSS/dog.mp4" type="video/mp4">
-        </video>
+    <div class="modal-content">
+        <div class="modal-body">
+            <video id="dogvid" width="100%" height="95%" controls>
+                <source src="CSS/dog.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
-  </div>
 </div>
-
+<div id="event">
+    <p>
+        <span id="eventtext"> </span>
+    </p>
 </div>
+<dialog id="weather-type">
+    <span>&#x2715;</span>
+    <article>
+        <img>
+        <p></p>
+    </article>
+</dialog>
 </body>
-
 </html>
-
-
-

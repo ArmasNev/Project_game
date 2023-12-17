@@ -7,7 +7,8 @@ body {
     background-image: url("ShinyOverlay.svg");
     font-family: Roboto, sans-serif;
     width:100%;
-    margin:0rem;
+    color: whitesmoke;
+    margin:0;
 }
 
 .nav {

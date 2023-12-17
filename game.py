@@ -5,6 +5,7 @@ from geopy.distance import great_circle
 
 db = Database()
 
+
 class Game:
     def __init__(self, game_id=None, name='Default'):
         self.game_id = game_id
@@ -129,25 +130,22 @@ class Game:
         if self.current_location == target_airport_id:
             raise Exception("You are already at this airport.")
 
-
         current_airport = self.get_airport_info(self.current_location)
         target_airport = self.get_airport_info(target_airport_id)
-
 
         if not current_airport or not target_airport:
             raise Exception("Airport information not found.")
 
-
         try:
             distance_km = great_circle((current_airport[0]['latitude_deg'], current_airport[0]['longitude_deg']),
-                                       (target_airport[0]['latitude_deg'], target_airport[0]['longitude_deg'])).kilometers
+                                       (target_airport[0]['latitude_deg'],
+                                        target_airport[0]['longitude_deg'])).kilometers
         except Exception as e:
             raise Exception(f"Error calculating distance: {str(e)}")
 
         cost = distance_km / 40
         if self.money < cost:
             raise Exception(f"Insufficient funds for this flight. Required: {cost}, Available: {self.money}")
-
 
         self.current_location = target_airport_id
         self.money -= cost
@@ -200,10 +198,9 @@ class Game:
             return "Game Over: You are out of time!"
         else:
             return "Game continues"
+
     def update_game_state(self):
         sql = '''UPDATE game SET location = %s, bank = %s, time = %s WHERE id = %s'''
         cursor = db.get_conn().cursor(dictionary=True)
         cursor.execute(sql, (self.current_location, self.money, self.time, self.game_id))
         db.get_conn().commit()
-
-
