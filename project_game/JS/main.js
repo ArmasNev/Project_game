@@ -44,9 +44,13 @@ document.querySelector('#player-form').addEventListener('submit', function (evt)
     evt.preventDefault();
     const playerName = document.querySelector('#player-input').value;
     document.querySelector('#player-modal').classList.add('hide');
-    gameSetup(`${apiUrl}newgame?name=${playerName}`);
+    gameSetup(`${apiUrl}newgame?name=${encodeURIComponent(playerName)}&selectedPet=${encodeURIComponent(selectedPet)}`);
     document.querySelector('#name').textContent = playerName;
-    document.querySelector('#time').textContent = '240 Hours';
+    if (selectedPet === 'dog') {
+        document.querySelector('#time').textContent = '192 Hours';}
+    else {
+        document.querySelector('#time').textContent = '240 Hours';
+    }
     document.querySelector('#money').textContent = '10000 ';
     document.querySelector('#dist').textContent = '40000 ';
 });
@@ -144,7 +148,7 @@ async function flyToAirport(airportIdent) {
                 winAudio.play();
                 setTimeout(function () {
                     window.location.href = 'about.html';
-                }, 10000);
+                }, 9000);
 
 
             } else {
