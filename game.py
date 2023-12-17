@@ -7,13 +7,19 @@ db = Database()
 
 
 class Game:
-    def __init__(self, game_id=None, name='Default'):
+    def __init__(self, game_id=None, name='Default', pet='Default_pet'):
         self.game_id = game_id
         self.name = name
+        self.pet = pet
         self.airports = []
         self.current_location = None
+        if self.pet == 'dog':
+            self.time = 192
+        else:
+            self.time = 240
+
         self.money = 10000
-        self.time = 240
+
         self.win = False
 
         if self.game_id is None:
