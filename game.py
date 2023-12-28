@@ -13,6 +13,8 @@ class Game:
         self.pet = pet
         self.airports = []
         self.current_location = None
+        self.curr_location_coords = None
+        self.prev_location_coords = None
         if self.pet == 'dog':
             self.time = 192
         else:
@@ -139,6 +141,7 @@ class Game:
         current_airport = self.get_airport_info(self.current_location)
         target_airport = self.get_airport_info(target_airport_id)
 
+
         if not current_airport or not target_airport:
             raise Exception("Airport information not found.")
 
@@ -146,6 +149,7 @@ class Game:
             distance_km = great_circle((current_airport[0]['latitude_deg'], current_airport[0]['longitude_deg']),
                                        (target_airport[0]['latitude_deg'],
                                         target_airport[0]['longitude_deg'])).kilometers
+
         except Exception as e:
             raise Exception(f"Error calculating distance: {str(e)}")
 
@@ -153,7 +157,11 @@ class Game:
         if self.money < cost:
             raise Exception(f"Insufficient funds for this flight. Required: {cost}, Available: {self.money}")
 
+        self.curr_location_coords = [target_airport[0]['latitude_deg'], target_airport[0]['longitude_deg']]
+        self.prev_location_coords = [current_airport[0]['latitude_deg'], current_airport[0]['longitude_deg']]
         self.current_location = target_airport_id
+        print(current_airport, target_airport)
+        print(self.prev_location_coords)
         self.money -= cost
         self.time -= 30
         self.update_game_state()

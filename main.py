@@ -34,6 +34,23 @@ def flyto(game_id, target):
         game.handle_event(event) if event else None
         game_over = game.is_game_over()
         game_over_message = game.game_over_status() if game_over else ""
+        print({
+            'status': {
+                'id': game.game_id,
+                'location': game.current_location,
+                'money': game.money,
+                'time': game.time,
+                'distance': game.money * 4,
+                'event_info': event_message,
+                'game_over': game_over,
+                'game_over_message': game_over_message,
+                'has_won': game.win,
+                'prev_location': game.prev_location_coords,
+                'curr_location': game.curr_location_coords
+            },
+            'game_id': game.game_id,
+            'location': game.current_location
+        })
         return jsonify({
             'status': {
                 'id': game.game_id,
@@ -44,7 +61,9 @@ def flyto(game_id, target):
                 'event_info': event_message,
                 'game_over': game_over,
                 'game_over_message': game_over_message,
-                'has_won': game.win
+                'has_won': game.win,
+                'prev_location': game.prev_location_coords,
+                'curr_location': game.curr_location_coords
             },
             'game_id': game.game_id,
             'location': game.current_location

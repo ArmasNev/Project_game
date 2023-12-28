@@ -76,6 +76,7 @@ document.addEventListener('click', function (event) {
 });
 
 let currentAirport = null;
+let prevAirport = null;
 
 
 // function to fetch data from API
@@ -103,10 +104,25 @@ async function gameSetup(url) {
             storedButtons[airport.ident] = button;
 
             button.addEventListener('click', function () {
-                flyToAirport(airport.ident);
                 currentAirport = {'latitude': airport.latitude_deg, 'longitude': airport.longitude_deg}
 
+                if (!airport || airport.latitude_deg === undefined || airport.longitude_deg === undefined) {
+                    console.error('Invalid airport data');
+                    return;
+                }
 
+                if (prevAirport) {
+                    const latlngs = [
+                        [prevAirport.latitude, prevAirport.longitude],
+                        [airport.latitude_deg, airport.longitude_deg]
+                    ];
+                    const polyline = L.polyline(latlngs, {color: 'red'});
+                    polyline.addTo(map);
+                }
+
+                // Update prevAirport after adding the polyline
+                prevAirport = {latitude: airport.latitude_deg, longitude: airport.longitude_deg};
+                flyToAirport(airport.ident);
             });
             const popupContent = `<h4>${airport.name}</h4><button class="button" data-ident="${airport.ident}">Fly here</button>`;
             marker.bindPopup(popupContent);
